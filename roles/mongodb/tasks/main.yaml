@@ -1,0 +1,16 @@
+- name: Install mongodb
+  ansible.builtin.package:
+    name: mongodb-org
+    state: present
+
+- name: allowing internet access
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: restart and enable mongodb server
+  ansible.builtin.service:
+    name: mongod
+    state: restarted
+    enabled: yes
