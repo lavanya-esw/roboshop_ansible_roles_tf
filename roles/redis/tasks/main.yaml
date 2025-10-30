@@ -1,0 +1,28 @@
+- name: disable redis
+  ansible.builtin.command: dnf module disable redis -y
+
+- name: enable redis 7
+  ansible.builtin.command: dnf module enable redis:7 -y
+
+- name: install redis
+  ansible.builtin.package:
+    name: redis
+    state: present
+
+- name: allow internet access
+  ansible.builtin.replace:
+    path: vim /etc/redis/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: disable protected 
+  ansible.builtin.lineinfile:
+    path: vim /etc/redis/redis.conf
+    regexp: 'protected-mode'
+    line: 'protected-mode no'
+
+- name: enable and rstart the service
+  ansible.builtin.service:
+    name: redis
+    state: restarted
+    enabled: yes
