@@ -24,3 +24,7 @@
         read_priv: .*
         write_priv: .*
     state: present
+
+- name: msg
+  ansible.builtin.debug:
+    msg: "rabbitmq connected"
