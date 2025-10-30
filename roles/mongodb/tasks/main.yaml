@@ -3,7 +3,7 @@
   ansible.builtin.copy:
     src: ./mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
-    
+
 - name: Install mongodb
   ansible.builtin.package:
     name: mongodb-org
@@ -20,3 +20,7 @@
     name: mongod
     state: restarted
     enabled: yes
+
+- name: print msg
+  ansible.builtin.debug:
+    msg: "successfulyy completed"
