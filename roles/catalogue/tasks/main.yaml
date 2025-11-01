@@ -1,0 +1,32 @@
+- name: app setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app_setup.yaml
+
+- name: nodejs setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs_setup.yaml
+  
+- name: copy mongo repo 
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: install mongodb
+  ansible.builtin.package:
+    name: mongodb-mongosh
+    state: present
+
+- name: connnect to mongodb catalogue
+  ansible.builtin.command: mongosh {{ MONGODB_HOST_NAME }} --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+  register: catalogue_output
+
+- name: load products into mongodb
+  ansible.builtin.shell: mongosh --host {{ MONGODB_HOST_NAME }} </app/db/master-data.js
+  when: catalogue_output.stdout | int < 0
+
+- name: system setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: system_setup.yaml
