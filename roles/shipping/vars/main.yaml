@@ -1,0 +1,6 @@
+CART_HOST_NAME: "cart-backend-alb-{{env}}.awsdevops.fun"
+MYSQL_HOST_NAME: "mysql-{{env}}.awsdevops.fun"
+
+LOGIN_USER: "root"
+LOGIN_PASSWORD: "{{ lookup('amazon.aws.aws_ssm', '/roboshop/{{env}}/{{component}}/mysql_root_password',region='us-east-1',decrypt=true)}}"
+version: "1.0"

@@ -1,0 +1,3 @@
+REDIS_HOST_NAME: "redis-{{env}.awsdevops.fun}"
+CATALOGUE_HOST_NAME: "catalogue.backend-alb-{{env}}.awsdevops.fun"
+                      
