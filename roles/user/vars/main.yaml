@@ -1,2 +1,2 @@
-REDIS_HOST_NAME: "redis-{{env}}.awsdevops.fun}"
+REDIS_HOST_NAME: "redis-{{env}}.awsdevops.fun"
 MONGODB_HOST_NAME: "mongodb-{{env}}.awsdevops.fun"
