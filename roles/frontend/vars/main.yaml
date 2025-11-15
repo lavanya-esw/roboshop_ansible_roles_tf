@@ -1,0 +1,5 @@
+CATALOGUE_HOST_NAME: "catalogue.backend-alb-{{env}}.awsdevops.fun"
+USER_HOST_NAME: "user.backend-alb-{{env}}.awsdevops.fun"
+CART_HOST_NAME: "cart.backend-alb-{{env}}.awsdevops.fun"
+SHIPPING_HOST_NAME: "shipping.backend-alb-{{env}}.awsdevops.fun"
+PAYMENT_HOST_NAME: "payment.backend-alb-{{env}}.awsdevops.fun"
