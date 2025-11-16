@@ -1,5 +1,5 @@
-CART_HOST_NAME: "cart-backend-alb-{{env}}.awsdevops.fun"
-USER_HOST_NAME: "user-backend-alb-{{env}}.awsdevops.fun"
+CART_HOST_NAME: "cart.backend-alb-{{env}}.awsdevops.fun"
+USER_HOST_NAME: "user.backend-alb-{{env}}.awsdevops.fun"
 RABBITMQ_HOST_NAME: "rabbitmq-{{env}}.awsdevops.fun"
 
 RABBITMQ_USER: roboshop
